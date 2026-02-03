@@ -1,1 +1,271 @@
-/* Add you CSS here */
+/* Dark hexagon aesthetic
+	 Simple, beginner-friendly CSS. Edit :root variables to change colors.
+*/
+
+:root{
+	--bg:#05060a;          /* near-black page background */
+	--panel:#0f1720;       /* dark card/panel */
+	--accent:#2b7cff;      /* bright blue accent */
+	--accent-2:#0f76d8;    /* deeper blue for gradients */
+	--muted:#98a3b3;       /* muted light grey for secondary text */
+	--glass:rgba(255,255,255,0.03);
+	--max-width:1000px;
+}
+
+*{box-sizing:border-box}
+body{
+	margin:0;
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+	color:#e6eef8;
+	background:linear-gradient(180deg,#020406 0%, #071126 60%), radial-gradient(circle at 10% 10%, rgba(43,124,255,0.06), transparent 2%);
+	background-blend-mode:overlay;
+	line-height:1.6;
+	font-size:16px;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+
+.container{
+	width:90%;
+	max-width:var(--max-width);
+	margin:0 auto;
+}
+
+/* Header */
+.site-header{
+	padding:18px 0;
+	transition:opacity 0.3s ease, visibility 0.3s ease;
+}
+.hero.banner-minimized ~ .site-header,
+#portfolio-content ~ .site-header{
+	position:relative;
+	opacity:1;
+	visibility:visible;
+}
+.site-header{
+	opacity:0;
+	visibility:hidden;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.site-title{font-family:Poppins, Inter, system-ui; font-size:1.15rem;margin:0;color:var(--accent);letter-spacing:0.2px}
+.nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
+.nav a:hover{color:var(--accent);text-shadow:0 4px 18px rgba(43,124,255,0.08)}
+
+.hero{
+	padding:12px 0;
+	min-height:100vh;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	width:100%;
+	overflow:visible;
+	transition:min-height 0.8s ease, padding 0.8s ease;
+	z-index:100;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.hero.banner-minimized{
+	min-height:360px;
+	position:relative;
+	top:auto;
+	left:auto;
+	right:auto;
+	width:auto;
+	display:block;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(rgba(5,6,10,0.85), rgba(5,6,10,0.85)), url('img/HD-wallpaper-black-blue-hexagon-pattern.jpg');
+  background-size: cover; background-position: center;
+  opacity: 0.7;
+  pointer-events: none; z-index: 0;
+}
+.hero::after{
+	content:"";
+	position:absolute;
+	right:6%;top:10%;
+	width:220px;height:240px;
+	background:linear-gradient(130deg,var(--accent),var(--accent-2));
+	opacity:0.08;
+	transform:rotate(12deg);
+	clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0% 50%);
+	pointer-events:none;z-index:1;
+}
+
+
+.hero .container{
+	padding-left:25px;
+	padding-right:25px;
+	width:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.hero.banner-minimized .container{
+	padding-left:25px;
+	padding-right:25px;
+	width:90%;
+	max-width:var(--max-width);
+	margin:0 auto;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+}
+.hero-inner{
+	display:flex;
+	gap:24px;
+	align-items:center;
+	justify-content:center;
+	position:relative;
+	z-index:2;
+	height:100%;
+}
+.hero.banner-minimized .hero-inner{
+	justify-content:space-between;
+	height:auto;
+}
+.hero-text{
+	flex:1 1 auto;
+	padding-right:0;
+	text-align:center;
+	transition:all 0.8s cubic-bezier(.77,0,.18,1);
+	transform:translate(0,0);
+}
+.hero.banner-minimized .hero-text{
+	flex:1 1 60%;
+	padding-right:25px;
+	text-align:left;
+	/* move caption only slightly so its right gap matches image left gap */
+	transform:translate(-8px,-6px);
+}
+.hero-text h2{margin:0 0 8px;font-size:2rem;color:#e8f3ff;font-family:Poppins, Inter;letter-spacing:0.2px}
+.hero-text p{margin:0 0 12px;color:var(--muted);max-width:640px}
+.btn{
+	display:inline-block;
+	padding:10px 18px;
+	background:linear-gradient(90deg,var(--accent),var(--accent-2));
+	color:#061526;
+	border-radius:10px;
+	text-decoration:none;
+	font-weight:700;
+	transition:all 0.45s cubic-bezier(.2,.9,.2,1);
+	clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%);
+	font-family:Poppins, Inter;
+}
+.btn:hover{
+	clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0% 50%);
+	border-radius:0;
+	transform:scale(1.08);
+	box-shadow:0 8px 24px rgba(43,124,255,0.4);
+}
+}
+
+/* Navigation link hover hexagon animation */
+.nav a{
+	transition:all 0.3s ease;
+}
+.nav a:hover{
+	color:var(--accent);
+	text-shadow:0 0 12px rgba(43,124,255,0.5);
+}
+
+/* Portrait shown inside a hexagon and centered */
+.hero-portrait{
+	flex:0 0 auto;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	margin-right:0;
+	margin-bottom:20px;
+	transition:all 0.8s cubic-bezier(.77,0,.18,1);
+	transform:translate(0,0);
+}
+.hero.banner-minimized .hero-portrait{
+		flex:0 0 auto;
+		margin-bottom:0;
+		margin-right:16px;
+		justify-content:flex-start;
+		/* Move only slightly left/up to align at top-left inside minimized banner */
+		transform:translate(-8px,-6px);
+}
+.hero-portrait img{
+	/* default centered size */
+	height:calc(80% - 24px);
+	width:auto;
+	max-width:368px;
+	object-fit:cover;
+	clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0% 50%);
+	border:3px solid rgba(255,255,255,0.06);
+	box-shadow:0 10px 36px rgba(2,6,23,0.75);
+	transform:none;
+	transition:height 0.8s cubic-bezier(.77,0,.18,1), max-width 0.8s cubic-bezier(.77,0,.18,1), transform 0.8s cubic-bezier(.77,0,.18,1);
+}
+.hero.banner-minimized .hero-portrait img{
+	/* fit inside minimized banner (min-height:360px) leaving ~10px top/bottom */
+	height:calc(360px - 20px);
+	max-width:340px;
+}
+
+/* Portfolio content wrapper */
+#portfolio-content{
+	transition:opacity 0.6s ease;
+	opacity:1;
+	margin-top:0;
+}
+#portfolio-content.portfolio-hidden{
+	display:none;
+	opacity:0;
+}
+
+.section{padding:36px 0}
+.section.container{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:900px;margin:0 auto}
+.section h3{margin:0 0 8px;color:#dfefff;font-family:Poppins, Inter;font-weight:700;letter-spacing:0.3px;font-size:1.15rem}
+.about-caption{max-width:720px;color:var(--muted);margin-top:12px;font-size:0.98rem;line-height:1.6}
+.skills-list{list-style:none;padding:0;display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:center}
+.skills-list li{background:transparent;padding:0;border-radius:8px;border:0;color:var(--muted);}
+
+.skill-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.skill-hex{width:88px;height:96px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-2),var(--accent));
+	clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0% 50%);
+	box-shadow:0 8px 24px rgba(2,6,23,0.6);}
+.skill-hex img{width:44px;height:44px;filter:brightness(0) invert(1);}
+.skill-item span{color:#dfefff;font-weight:600;font-size:0.95rem}
+
+/* Projects grid with hexagon thumbnails */
+.projects-grid{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.project-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));flex:0 0 260px;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(2,6,23,0.6);text-align:center}
+.project-thumb{height:120px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;color:#061526;font-weight:700;clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0% 50%)}
+.project-card h4{margin:12px 0 6px;color:#e8f3ff}
+.project-card p{margin:0;color:var(--muted)}
+
+/* Footer */
+.site-footer{
+	padding:18px 0;
+	background:transparent;
+	color:var(--muted);
+	text-align:center;
+	transition:opacity 0.8s ease, visibility 0.8s ease;
+	opacity:0;
+	visibility:hidden;
+}
+#portfolio-content .site-footer,
+.hero.banner-minimized ~ .site-footer{
+	opacity:1;
+	visibility:visible;
+}
+
+/* Small screens adjustments */
+
+@media (max-width:720px){
+	.hero-inner{flex-direction:column;align-items:center;text-align:center}
+	.hero-text{order:2}
+	.hero-portrait{order:1;margin:0 0 12px}
+	.hero-portrait img{width:100px;height:100px;transform:none}
+	.nav{display:none}
+	.hero::after{display:none}
+}
+
+/* Tip: change the hexagon shape by editing the clip-path polygon points above. */

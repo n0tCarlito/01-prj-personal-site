@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Simple hexagon pattern SVG used as a subtle, semi-transparent banner background -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <pattern id="hex" patternUnits="userSpaceOnUse" width="120" height="104" patternTransform="translate(0,0)">
+      <g fill="#2b7cff" opacity="0.06">
+        <polygon points="30,0 90,0 120,52 90,104 30,104 0,52" />
+      </g>
+    </pattern>
+    <linearGradient id="grad" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0f2a4d" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#00101a" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad)" />
+  <rect width="100%" height="100%" fill="url(#hex)" />
+</svg>
